@@ -7,9 +7,17 @@ func test_2607() {
     
     for _ in 0..<count {
         let compareSet = Set(readLine()!.map { $0 }.map { $0 })
+        
+        // 두 단어가 같은 구성을 같는 경우
+        if originSet.isSubset(of: compareSet) {
+            result += 1
+        }
+        
         let originSubtracting = originSet.subtracting(compareSet)
         let compareSubtracting = compareSet.subtracting(originSet)
-        if originSubtracting.count == compareSubtracting.count {
+        
+        // 하나의 문자를 다른 문자로 바꾸거나
+        if originSubtracting.count == 1 || compareSubtracting.count == 1 {
             result += 1
         }
     }
